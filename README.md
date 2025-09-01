@@ -1,3 +1,13 @@
+# The purpose of this fork...
+
+...is to build POCO with [Bazel](https://bazel.build/). At the moment I wrote `BUILD` files only for
+- Foundation
+- Net
+- JSON
+libraries and only for POSIX target platform. The most difficult part was Foundation. It is rather easy to build other POCO libraries, do it if you need it.
+
+It is easy use POCO in other bazel-driven monorepo with [http_archive](https://bazel.build/rules/lib/repo/http#http_archive) rule.
+
 ![alt text][logo]
 
 [![poco-ci](https://github.com/pocoproject/poco/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/pocoproject/poco/actions/workflows/ci.yml)
@@ -65,7 +75,7 @@ $ sudo apt-get -y update && sudo apt-get -y install git g++ make cmake libssl-de
 #### RedHat Linux
 
 ```
-$ sudo yum install -y git gcc-c++ make cmake3 openssl-devel mysql-devel postgresql-devel 
+$ sudo yum install -y git gcc-c++ make cmake3 openssl-devel mysql-devel postgresql-devel
 ```
 
 #### macOS (with Homebrew)
