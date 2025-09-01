@@ -1,0 +1,41 @@
+#######################
+# Common
+# https://bazel.build/remote/caching
+build --remote_cache=http://bazel-cache.dev.tpinf.in/cache
+
+# turn on test output
+test --test_output=errors
+
+
+######################
+# C++
+build --cxxopt=-std=c++20
+# turn on optimization
+build --compilation_mode=opt
+# turn off debug symbols for external dependencies
+build --per_file_copt=external/.*@-g0
+# turn on debug symbols
+build --copt=-g
+# keep debug symbols in the binary
+build --strip=never
+# optimize for size
+build --linkopt=-Wl,--gc-sections
+
+# C++ debug: build with --config=dbg
+# avoid optimizations
+build:dbg --compilation_mode=dbg
+
+
+
+
+######################
+# proto
+# https://github.com/rules-proto-grpc/rules_proto_grpc/issues/390
+build --noincompatible_disallow_ctx_resolve_tools
+
+
+
+######################
+# Python
+# https://dev.to/nioan/resolving-python-import-failures-in-bazel-with-protolibrary-targets-4i8i
+build --incompatible_default_to_explicit_init_py

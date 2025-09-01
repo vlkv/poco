@@ -174,3 +174,8 @@ node_modules
 # Debug files #
 ##############
 *.core
+
+# Bazel #
+#########
+bazel-*
+.bazel-cache/

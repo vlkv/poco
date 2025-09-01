@@ -1,0 +1,40 @@
+load("@rules_cc//cc:cc_library.bzl", "cc_library")
+
+cc_library(
+    name = "Foundation",
+    hdrs = glob([
+        "include/**/*.h",
+		"include/**/*.cpp",
+		"include/**/*.c",
+		"include/**/*.cc",
+    ], exclude = [
+		"include/Poco/Event_VX.h",
+		"include/Poco/FPEnvironment_SUN.h",
+		"include/Poco/SharedLibrary_HPUX.h",
+	]),
+	srcs = glob([
+		"src/**/*.cpp",
+		"src/**/*.c",
+	], exclude=[
+		"src/*WIN32*.cpp",
+		"src/*VX*.cpp",
+		"src/Windows*.cpp",
+		"src/DirectoryIterator_UNIX.cpp",
+		"src/Environment_UNIX.cpp",
+		"src/Environment_VX.cpp",
+		"src/Event_POSIX.cpp",
+		"src/Event_VX.cpp",
+		"src/EventLogChannel.cpp",
+		"src/FPEnvironment.cpp",
+		"src/FPEnvironment_DEC.cpp",
+		"src/FPEnvironment_SUN.cpp",
+	]),
+	strip_include_prefix = "include",
+    visibility = ["//visibility:public"],
+    deps = [
+		"@zlib//:zlib",
+	],
+	copts = [
+		"-DPOCO_NO_WINDOWS_H",
+	],
+)
