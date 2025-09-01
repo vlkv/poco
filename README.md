@@ -4,6 +4,7 @@
 - Foundation
 - Net
 - JSON
+
 libraries and only for POSIX target platform. The most difficult part was Foundation. It is rather easy to build other POCO libraries, do it if you need it.
 
 It is easy use POCO in other bazel-driven monorepo with [http_archive](https://bazel.build/rules/lib/repo/http#http_archive) rule.
