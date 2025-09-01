@@ -18,7 +18,7 @@ cc_library(
 	], exclude=[
 		"src/*WIN32*.cpp",
 		"src/*VX*.cpp",
-		"src/Windows*.cpp",
+		"src/WindowsConsoleChannel.cpp",
 		"src/DirectoryIterator_UNIX.cpp",
 		"src/Environment_UNIX.cpp",
 		"src/Environment_VX.cpp",
