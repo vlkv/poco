@@ -1,0 +1,24 @@
+load("@rules_cc//cc:cc_library.bzl", "cc_library")
+
+cc_library(
+    name = "Net",
+    hdrs = glob([
+        "include/**/*.h",
+    ], exclude = [
+	]),
+	srcs = glob([
+		"src/**/*.cpp",
+		"src/**/*.c",
+	], exclude=[
+		"src/wepoll.c",  # NOTE: It is Windows specific, do not need it
+	]),
+	strip_include_prefix = "include",
+    visibility = ["//visibility:public"],
+    deps = [
+		"@zlib//:zlib",
+		"//Foundation",
+	],
+	copts = [
+		"-DPOCO_NO_WINDOWS_H",
+	],
+)
