@@ -5,7 +5,7 @@
 - Net
 - JSON
 
-libraries and only for POSIX target platform. The most difficult part was Foundation. It is rather easy to build other POCO libraries, do it if you need it.
+libraries and only for POSIX target platform. The most difficult part was Foundation. The main trick was to move some of the `*.cpp`, `*.c`, `*.cc` files to the `include` subdirectory (because those files are included from other `*.cpp` files). It is rather easy to build other POCO libraries, do it if you need it.
 
 It is easy use POCO in other bazel-driven monorepo with [http_archive](https://bazel.build/rules/lib/repo/http#http_archive) rule.
 
